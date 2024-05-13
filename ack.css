@@ -1,0 +1,169 @@
+.btn-icon {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+}
+
+.btn-sm {
+        padding: 0.1rem 0.25rem; /* Adjust padding to make the button smaller */
+        font-size: 0.8rem; /* Adjust font size */
+    }
+
+    thead th {
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    .action-divider {
+        color: gray;
+    }
+
+    .modal-label {
+        font-weight: bold;
+    }
+    
+    .modal-input {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+    }
+    
+    .modal-btn {
+        border-radius: 5px;
+        padding: 8px 12px;
+    }
+    
+    .btn-secondary.modal-btn {
+        background-color: #6c757d;
+        border: none;
+    }
+    
+    .btn-primary.modal-btn {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .dataTables_paginate {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    /* Style for DataTables previous and next buttons */
+    .dataTables_paginate .paginate_button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        margin: 0 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .dataTables_paginate .paginate_button:hover {
+        background-color: #0056b3;
+    }
+    
+    .dataTables_paginate .paginate_button.disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+    
+    /* Style for DataTables current page button */
+    .dataTables_paginate .paginate_button.current {
+        background-color: #0056b3;
+    }
+
+    .dataTables_length label {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+    
+    .dataTables_length select {
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    
+    /* Style for DataTables number of entries */
+    .dataTables_info {
+        margin-top: 10px;
+        font-style: italic;
+    }
+    /* Style for DataTables search bar */
+    .dataTables_filter {
+        margin-bottom: 20px;
+    }
+
+    .dataTables_filter label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: black; /* Adjust color to match your design */
+}
+
+.dataTables_filter input[type="search"] {
+    padding: 8px 12px;
+    border-radius: 20px; /* Adjust border-radius to make it rounded pill */
+    border: 1px solid #ccc;
+    transition: border-color 0.3s;
+    background-color: #f8f9fc; /* Adjust background color to match your design */
+    color: #495057; /* Adjust text color to match your design */
+}
+
+.dataTables_filter input[type="search"]:focus {
+    outline: none;
+    border-color: #007bff; /* Adjust focus color to match your design */
+}
+
+.dataTables_length label {
+    font-weight: bold;
+    color: black; /* Adjust color to match your design */
+}
+
+.dataTables_length select {
+    padding: 4px 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s;
+    background-color: #f8f9fc; /* Adjust background color to match your design */
+    color: #495057; /* Adjust text color to match your design */
+}
+
+.dataTables_length select:focus {
+    outline: none;
+    border-color: #007bff; /* Adjust focus color to match your design */
+}
+table.dataTable {
+    border: none;
+}
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+}
+.container-fluid {
+    margin-top: 100px; /* Adjust the value as needed */
+}

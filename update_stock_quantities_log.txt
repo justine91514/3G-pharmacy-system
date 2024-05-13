@@ -1,0 +1,324 @@
+Quantities updated successfully.
+Quantities updated successfully.
+Item: Coke - 100ml, Quantity: 3
+Quantities updated successfully.
+Item: Coke - 100ml, Quantity: 4
+Quantities updated successfully.
+Item: Coke - 100ml, Quantity: 2
+Quantities updated successfully.
+Item: Coke - 100ml, Quantity: 2
+Quantities updated successfully.
+Item: Coke - 100ml, Quantity: 1
+Quantities updated successfully.
+Item: Coke, Quantity: 100
+Quantities updated successfully.
+Item: Coke, Quantity: 100
+Quantities updated successfully.
+Item: sardines, Quantity: 3
+Quantities updated successfully.
+Item: sardines, Quantity: 2
+Quantities updated successfully.
+Item: sardines, Quantity: 3
+Quantities updated successfully.
+Item: sardines, Quantity: 1
+Quantities updated successfully.
+Item: Sardines, Quantity: 4
+Quantities updated successfully.
+Item: Sardines, Quantity: 2
+Quantities updated successfully.
+Item: Sardines, Quantity: 6
+Quantities updated successfully.
+Item: Energen, Quantity: 10
+Quantities updated successfully.
+Item: Coke, Quantity: 5
+Quantities updated successfully.
+Item: Energen, Quantity: 5
+Quantities updated successfully.
+Item: Energen, Quantity: 6
+Quantities updated successfully.
+Item: Energen, Quantity: 7
+Quantities updated successfully.
+Item: Coke, Quantity: 10
+Quantities updated successfully.
+Item: Coke, Quantity: 1
+Quantities updated successfully.
+Item: Sardines, Quantity: 1
+Quantities updated successfully.
+Item: Coke, Quantity: 1
+Quantities updated successfully.
+Item: Coke, Quantity: 4
+Quantities updated successfully.
+Item: Coke, Quantity: 1
+Quantities updated successfully.
+Item: Kojic with Gluta, Quantity: 5
+Quantities updated successfully.
+Item: Sardines, Quantity: 5
+Quantities updated successfully.
+Item: Sardines, Quantity: 4
+Quantities updated successfully.
+Item: Sardines, Quantity: 1
+Quantities updated successfully.
+Item: Sardines, Quantity: 1
+Quantities updated successfully.
+Item: Sardines, Quantity: 1
+Quantities updated successfully.
+Item: Energen, Quantity: 1
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Biguerlai, Quantity: 1
+Quantities updated successfully.
+Item: Biguerlai, Quantity: 1
+Quantities updated successfully.
+Item: Energen, Quantity: 1
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 5
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Energen, Quantity: 5
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Energen, Quantity: 1
+Quantities updated successfully.
+Item: Energen, Quantity: 4
+Quantities updated successfully.
+Item: Energen, Quantity: 3
+Quantities updated successfully.
+Item: test, Quantity: 5
+Quantities updated successfully.
+Item: test, Quantity: 5
+Quantities updated successfully.
+Item: Energen, Quantity: 5
+Quantities updated successfully.
+Item: test, Quantity: 2
+Item: Energen, Quantity: 5
+Quantities updated successfully.
+Item: Energen, Quantity: 5
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Energen, Quantity: 5
+Quantities updated successfully.
+Item: , Quantity: 4
+Quantities updated successfully.
+Item: , Quantity: 2
+Quantities updated successfully.
+Item: , Quantity: 4
+Quantities updated successfully.
+Item: Energen, Quantity: 4
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Energen, Quantity: 3
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Energen, Quantity: 3
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Energen, Quantity: 1
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Energen, Quantity: 1
+Quantities updated successfully.
+Item: Energen, Quantity: 1
+Quantities updated successfully.
+Item: test, Quantity: 5
+Quantities updated successfully.
+Item: test, Quantity: 10
+Quantities updated successfully.
+Item: test, Quantity: 10
+Quantities updated successfully.
+Item: test, Quantity: 10
+Quantities updated successfully.
+Item: test, Quantity: 10
+Quantities updated successfully.
+Item: test, Quantity: 29
+Quantities updated successfully.
+Item: test, Quantity: 29
+Quantities updated successfully.
+Item: test, Quantity: 1
+Quantities updated successfully.
+Item: test, Quantity: 1
+Quantities updated successfully.
+Item: test, Quantity: 1
+Quantities updated successfully.
+Item: test, Quantity: 1
+Quantities updated successfully.
+Item: test, Quantity: 1
+Quantities updated successfully.
+Item: test, Quantity: 1
+Quantities updated successfully.
+Item: test, Quantity: 1
+Quantities updated successfully.
+Item: test, Quantity: 1
+Quantities updated successfully.
+Item: test, Quantity: 1
+Quantities updated successfully.
+Item: test, Quantity: 1
+Quantities updated successfully.
+Item: test, Quantity: 1
+Quantities updated successfully.
+Item: test, Quantity: 33
+Quantities updated successfully.
+Item: test, Quantity: 2
+Quantities updated successfully.
+Item: test, Quantity: 5
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 1
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 1
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 1
+Quantities updated successfully.
+Item: Energen, Quantity: 6
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 4
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 2
+Quantities updated successfully.
+Item: Energen, Quantity: 1
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 3
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 8
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 5
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 6
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 2
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 5
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 5
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 3
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 17
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 2
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 2
+Quantities updated successfully.
+Item: Biguerlai, Quantity: 2
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 5
+Item: Energen, Quantity: 5
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Energen, Quantity: 2
+Quantities updated successfully.
+Item: Biguerlai, Quantity: 4
+Quantities updated successfully.
+Item: Energen, Quantity: 4
+Quantities updated successfully.
+Item: Energen, Quantity: 5
+Quantities updated successfully.
+Item: Energen, Quantity: 1
+Quantities updated successfully.
+Item: Biguerlai, Quantity: 2
+Quantities updated successfully.
+Item: Biguerlai, Quantity: 3
+Quantities updated successfully.
+Item: Biguerlai, Quantity: 3
+Quantities updated successfully.
+Item: Biguerlai, Quantity: 2
+Quantities updated successfully.
+Item: Biguerlai, Quantity: 3
+Quantities updated successfully.
+Item: Biguerlai, Quantity: 1
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 2
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 2
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 1
+Quantities updated successfully.
+Item: Biguerlai, Quantity: 10
+Quantities updated successfully.
+Item: Biguerlai, Quantity: 10
+Quantities updated successfully.
+Item: Biguerlai, Quantity: 10
+Quantities updated successfully.
+Item: Biguerlai, Quantity: 10
+Quantities updated successfully.
+Item: Energen, Quantity: 5
+Quantities updated successfully.
+Item: Energen, Quantity: 5
+Quantities updated successfully.
+Item: Energen, Quantity: 15
+Quantities updated successfully.
+Item: Energen, Quantity: 5
+Quantities updated successfully.
+Item: Energen, Quantity: 7
+Quantities updated successfully.
+Item: Energen, Quantity: 1
+Quantities updated successfully.
+Item: Energen, Quantity: 1
+Quantities updated successfully.
+Item: Energen, Quantity: 1
+Quantities updated successfully.
+Item: Energen, Quantity: 1
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 1
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 2
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 1
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 1
+Quantities updated successfully.
+Item: Great Taste White, Quantity: 3
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 1
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 1
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 1
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 1
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 1
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 1
+Quantities updated successfully.
+Item: milo, Quantity: 5
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 4
+Quantities updated successfully.
+Item: Swan Sardines, Quantity: 23
+Quantities updated successfully.
+Item: BIuerlai, Quantity: 2
+Quantities updated successfully.
+Item: BIuerlai, Quantity: 1
+Quantities updated successfully.
+Item: Ibuprofen Advil, Quantity: 1
+Quantities updated successfully.
+Item: Dove, Quantity: 1
+Quantities updated successfully.
+Item: Hansel, Quantity: 6
+Quantities updated successfully.
+Item: Hansel, Quantity: 5
+Quantities updated successfully.
+Item: Hansel, Quantity: 1
+Quantities updated successfully.
+Item: Youngs Town, Quantity: 3
+Quantities updated successfully.

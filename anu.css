@@ -1,0 +1,103 @@
+.container {
+    max-width: 80%;
+    display: flex;
+    align-items: flex-start; /* Align items to the start (left side) */
+    padding: 0; /* Remove any padding */
+}
+
+.right-section {
+    flex-grow: 1; /* Stretch to fill available space */
+    order: 2; /* Change the order to display on the right */
+}
+
+.left-section {
+    flex-grow: 1; /* Stretch to fill available space */
+    order: 1; /* Change the order to display on the left */
+}
+
+.input-skulabel {
+    margin-bottom: 10px;
+}
+
+.right-section, .left-section {
+    padding: 20px;
+    margin-top: 100px;
+    background-color: #ffffff; /* White background */
+}
+
+.product-info h2 {
+    font-size: 24px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.input-skulabel {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: #f9f9f9; /* Light gray background */
+    color: #333; /* Minimalist text color */
+}
+
+.btn-primary {
+    background-color: #259E9E;
+    border-color: #259E9E;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #207a7a; /* Darken slightly on hover */
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ced4da;
+    padding: 8px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #304B1B;
+    color: white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+}
+
+.table-striped tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.modal-backdrop {
+    background-color: transparent !important;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.modal {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+}

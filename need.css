@@ -1,0 +1,210 @@
+.btn-icon {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+}
+
+.btn-sm {
+        padding: 0.1rem 0.25rem; /* Adjust padding to make the button smaller */
+        font-size: 0.8rem; /* Adjust font size */
+    }
+
+    thead th {
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    .action-divider {
+        color: gray;
+    }
+
+    /* Style for DataTables pagination control */
+.dataTables_paginate {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Style for DataTables previous and next buttons */
+.dataTables_paginate .paginate_button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dataTables_paginate .paginate_button:hover {
+    background-color: #0056b3;
+}
+
+.dataTables_paginate .paginate_button.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Style for DataTables current page button */
+.dataTables_paginate .paginate_button.current {
+    background-color: #0056b3;
+}
+
+/* Style for DataTables rows per page dropdown */
+.dataTables_length label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.dataTables_length select {
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Style for DataTables number of entries */
+.dataTables_info {
+    margin-top: 10px;
+    font-style: italic;
+}
+/* Style for DataTables search bar */
+.dataTables_filter {
+    margin-bottom: 20px;
+}
+
+.dataTables_filter label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: black; /* Adjust color to match your design */
+}
+
+.dataTables_filter input[type="search"] {
+    padding: 8px 12px;
+    border-radius: 20px; /* Adjust border-radius to make it rounded pill */
+    border: 1px solid #ccc;
+    transition: border-color 0.3s;
+    background-color: #f8f9fc; /* Adjust background color to match your design */
+    color: #495057; /* Adjust text color to match your design */
+}
+
+.dataTables_filter input[type="search"]:focus {
+    outline: none;
+    border-color: #007bff; /* Adjust focus color to match your design */
+}
+
+
+.dataTables_length label {
+    font-weight: bold;
+    color: black; /* Adjust color to match your design */
+}
+
+.dataTables_length select {
+    padding: 4px 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s;
+    background-color: #f8f9fc; /* Adjust background color to match your design */
+    color: #495057; /* Adjust text color to match your design */
+}
+
+.dataTables_length select:focus {
+    outline: none;
+    border-color: #007bff; /* Adjust focus color to match your design */
+}
+table.dataTable {
+    border: none;
+}
+.modal-label {
+    font-weight: bold;
+}
+
+.modal-input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+}
+
+.modal-btn {
+    border-radius: 5px;
+    padding: 8px 12px;
+}
+
+.btn-secondary.modal-btn {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary.modal-btn {
+    background-color: red;
+    border: none;
+}
+.dataTables_wrapper .dataTables_filter {
+    margin-top: 10px; /* Adjust the value as needed */
+}
+
+.dataTables_wrapper .dataTables_length {
+    margin-top: 10px; /* Adjust the value as needed */
+}
+
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-text {
+    position: absolute;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1;
+    display: none; /* Initially hide the overlay */
+}
+
+.tooltip-container:hover .tooltip-text {
+    display: block; 
+}
+.container-fluid {
+    margin-top: 100px; /* Adjust the value as needed */
+}
+
+
+        /* Modal styles */
+        .modal-content {
+        background-color: #f8f9fc; /* Background color */
+        border-radius: 10px; /* Rounded corners */
+    }
+
+    .modal-header {
+        border-bottom: none; /* Remove border at the bottom of the header */
+        padding: 15px 20px; /* Add padding */
+        background-color: #EB3223; /* Header background color */
+        color: #fff; /* Header text color */
+        border-radius: 10px 10px 0 0; /* Rounded corners only at the top */
+    }
+
+    .modal-body {
+        padding: 20px; /* Add padding */
+    }
+
+    .modal-footer {
+        border-top: none; /* Remove border at the top of the footer */
+        padding: 15px 20px; /* Add padding */
+        background-color: #f8f9fc; /* Footer background color */
+        border-radius: 0 0 10px 10px; /* Rounded corners only at the bottom */
+    }
+
+    /* Close button style */
+    .modal-header .close {
+        display: none;
+    }
+
+    .modal-body label {
+        color: #304B1B;
+        font-weight: bold;
+    }
