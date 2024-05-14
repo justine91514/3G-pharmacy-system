@@ -38,7 +38,7 @@
     } else {
         // Use the regular query to fetch product details
         $connection = mysqli_connect("localhost", "root", "", "dbpharmacy");
-        $query = "SELECT id, prod_name, categories, type, measurement, stocks_available, description, prescription FROM product_list";
+        $query = "SELECT id, prod_name, categories, type, stocks_available, description, prescription FROM product_list";
         $query_run = mysqli_query($connection, $query);
     }
     ?>
@@ -195,7 +195,7 @@
                     $connection = mysqli_connect("localhost", "root", "", "dbpharmacy");
 
                     // Query to fetch product details with total quantity per branch
-                    $query = "SELECT p.id, p.prod_name, p.description, p.prod_code, p.categories, p.type, p.unit, p.measurement, 
+                    $query = "SELECT p.id, p.prod_name, p.description, p.prod_code, p.categories, p.type, p.unit, 
                           SUM(CASE WHEN a.branch = 'Cell Med' THEN a.quantity ELSE 0 END) AS 'Cell Med',
                           SUM(CASE WHEN a.branch = '3G Med' THEN a.quantity ELSE 0 END) AS '3G Med',
                           SUM(CASE WHEN a.branch = 'Boom Care' THEN a.quantity ELSE 0 END) AS 'Boom Care',
@@ -220,7 +220,7 @@
                             <th style="vertical-align: middle;">Category </th>
                             <th style="vertical-align: middle;">Type </th>
                             <th style="vertical-align: middle;">Unit </th>
-                            <th style="vertical-align: middle;">Measurement </th>
+                            
                             <th style="vertical-align: middle;">Stocks Available</th>
                             <th style="vertical-align: middle;">Prescription </th>
                             <!--    <th> Has Discount </th>-->
@@ -238,7 +238,7 @@
                                         <td style="vertical-align: middle;"><?php echo $row['categories']; ?></td>
                                         <td style="vertical-align: middle;"><?php echo $row['type']; ?></td>
                                         <td style="vertical-align: middle;"><?php echo $row['unit']; ?></td>
-                                        <td style="vertical-align: middle;"><?php echo $row['measurement']; ?></td>
+                                        
                                         <td style="vertical-align: middle;">
                                             <?php
                                             if ($selectedBranch === 'All') {

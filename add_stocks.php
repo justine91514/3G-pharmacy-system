@@ -219,14 +219,19 @@
                                     $query = "SELECT * FROM product_list WHERE prod_name='$productName'";
                                     $query_run = mysqli_query($connection, $query);
                                     $productInfo = mysqli_fetch_assoc($query_run);
-                                    $measurement = $productInfo['measurement'];
+
                                     $selected = ($selectedProduct == $productName) ? 'selected' : '';
-                                    echo "<option value='$productName' data-measurement='$measurement' $selected>
-                      $productName - <span style='font-size: 80%;'>$measurement</span>
+                                    echo "<option value='$productName' $selected>
+                      $productName </span>
                   </option>";
                                 }
                                 ?>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Measurement</label>
+                            <input type="text" name="measurement" class="form-control" placeholder="Input Measurement"
+                                required disabled />
                         </div>
                         <div class="form-group">
                             <label>Description</label>
@@ -319,10 +324,10 @@
                 </div>
                 <div class="table-responsive" style="max-width: 100%; overflow-x: auto;">
                     <?php
-                    $query = "SELECT add_stock_list.*, product_list.measurement 
-                            FROM add_stock_list
-                            JOIN product_list ON add_stock_list.product_stock_name = product_list.prod_name
-                            WHERE ('$selectedBranch' = 'All' OR add_stock_list.branch = '$selectedBranch')";
+                    $query = "SELECT add_stock_list.*
+                   FROM add_stock_list
+                   JOIN product_list ON add_stock_list.product_stock_name = product_list.prod_name
+                   WHERE ('$selectedBranch' = 'All' OR add_stock_list.branch = '$selectedBranch')";
                     $query_run = mysqli_query($connection, $query);
                     ?>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -331,6 +336,7 @@
                             <th style="vertical-align: middle;">SKU</th>
                             <!-- <th style="vertical-align: middle;">Purchase Price</th> -->
                             <th style="vertical-align: middle;">Product Name</th>
+                            <th style="vertical-align: middle;">Measurement</th>
                             <th style="vertical-align: middle;">Description</th>
                             <th style="vertical-align: middle;">Quantity</th>
                             <th style="vertical-align: middle;">Price</th>
@@ -365,7 +371,8 @@
                                         echo '<tr>';
                                         echo '<td style="vertical-align: middle;">' . $row['id'] . '</td>';
                                         echo '<td style="vertical-align: middle;">' . $row['sku'] . '</td>';
-                                        echo '<td style="vertical-align: middle;">' . $row['product_stock_name'] . ' - <span style="font-size: 80%;">' . $row['measurement'] . '</span></td>';
+                                        echo '<td style="vertical-align: middle;">' . $row['product_stock_name'] . '</td>';
+                                        echo '<td style="vertical-align: middle;">' . $row['measurement'] . '</td>';
                                         echo '<td style="vertical-align: middle;">' . $row['descript'] . '</td>';
                                         echo '<td style="vertical-align: middle;">';
                                         if ($row['quantity'] < 20) {
@@ -531,6 +538,8 @@
     document.getElementById('sku_input').addEventListener('input', function () {
         var sku = this.value.trim();
         var productNameField = document.querySelector('[name="product_stock_name"]');
+        var measureField = document.querySelector('[name="measurement"]');
+        var quantityField = document.querySelector('[name="quantity"]');
         var descriptionField = document.querySelector('[name="descript"]');
         var quantityField = document.querySelector('[name="quantity"]');
         var priceField = document.querySelector('[name="price"]');
@@ -540,6 +549,7 @@
 
         if (sku) {
             productNameField.removeAttribute('disabled');
+            measureField.removeAttribute('disabled');
             descriptionField.removeAttribute('disabled');
             quantityField.removeAttribute('disabled');
             priceField.removeAttribute('disabled');
@@ -548,6 +558,7 @@
             expiryDateField.removeAttribute('disabled');
         } else {
             productNameField.setAttribute('disabled', 'disabled');
+            measureField.removeAttribute('disabled', 'disabled');
             descriptionField.setAttribute('disabled', 'disabled');
             quantityField.setAttribute('disabled', 'disabled');
             priceField.setAttribute('disabled', 'disabled');

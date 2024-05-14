@@ -48,8 +48,6 @@ error_reporting(E_ALL);
     }
     ?>
 
-
-
     <div class="container-fluid" style="width: 90%; padding-bottom: 80px; margin-bottom: 100px;">
 
         <div class="card shadow nb-4">

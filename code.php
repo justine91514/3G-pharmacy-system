@@ -716,7 +716,8 @@ if (isset($_POST['add_stock_btn'])) {
     // Get data from the form
     $sku = $_POST['sku'];
     $product_name = $_POST['product_stock_name'];
-    $description = $_POST['description'];
+    $measurement= $_POST['measurement'];
+    $descript = $_POST['descript'];
     $quantity = $_POST['quantity'];
     $price = $_POST['price'];
     $supplier = $_POST['supp_name'];
@@ -755,8 +756,8 @@ if (isset($_POST['add_stock_btn'])) {
     $batch_number = date('ymd') . $new_batch_count_padded;
 
     // Execute query to add stock
-    $add_stock_query = "INSERT INTO add_stock_list (sku, product_stock_name, descript, quantity, price, supp_name, branch, expiry_date, date_added, batch_number)
-                        VALUES ('$sku', '$product_name', '$description', '$quantity', '$price', '$supplier', '$branch', '$expiry_date', '$date_added', '$batch_number')";
+    $add_stock_query = "INSERT INTO add_stock_list (sku, product_stock_name, measurement, descript, quantity, price, supp_name, branch, expiry_date, date_added, batch_number)
+                        VALUES ('$sku', '$product_name', '$measurement', '$descript', '$quantity', '$price', '$supplier', '$branch', '$expiry_date', '$date_added', '$batch_number')";
     $add_stock_result = mysqli_query($connection, $add_stock_query);
 
     if ($add_stock_result) {
