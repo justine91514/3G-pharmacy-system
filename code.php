@@ -876,8 +876,8 @@ if (isset($_POST['restore_btn'])) {
 
         // Restore the data to the add_stock_list table
         $current_date = date('Y-m-d H:i:s');
-        $restore_query = "INSERT INTO add_stock_list (id, sku, product_stock_name, descript, quantity, price, supp_name, branch, batch_number, expiry_date, date_added)
-        VALUES ('{$row['id']}', '{$row['sku']}', '$product_name', '{$row['descript']}' , '{$row['quantity']}',  '{$row['price']}', '{$row['supplier']}','{$row['branch']}','{$row['batch_number']}', '{$row['expiry_date']}', '$current_date')";
+        $restore_query = "INSERT INTO add_stock_list (id, sku, product_stock_name, measurement, descript, quantity, price, supp_name, branch, batch_number, expiry_date, date_added)
+        VALUES ('{$row['id']}', '{$row['sku']}', '$product_name', '{$row['measurement']}', '{$row['descript']}', '{$row['quantity']}',  '{$row['price']}', '{$row['supplier']}','{$row['branch']}','{$row['batch_number']}', '{$row['expiry_date']}', '$current_date')";
         mysqli_query($connection, $restore_query);
 
         // Update the stocks_available in add_stock_list
