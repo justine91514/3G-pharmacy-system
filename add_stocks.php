@@ -145,8 +145,8 @@
 
     while ($expired_product = mysqli_fetch_assoc($expired_products_result)) {
         // Move expired product to expired_list
-        $move_to_expired_query = "INSERT INTO expired_list (sku, product_name, descript, quantity, price, Supplier, expiry_date)
-                             VALUES ('{$expired_product['sku']}', '{$expired_product['product_stock_name']}','{$expired_product['descript']}',  '{$expired_product['quantity']}', '{$expired_product['price']}', '{$expired_product['supp_name']}', '{$expired_product['expiry_date']}')";
+        $move_to_expired_query = "INSERT INTO expired_list (sku, product_name, measurement, descript, quantity, price, Supplier, expiry_date)
+                             VALUES ('{$expired_product['sku']}', '{$expired_product['product_stock_name']}', '{$expired_product['measurement']}',  '{$expired_product['descript']}',  '{$expired_product['quantity']}', '{$expired_product['price']}', '{$expired_product['supp_name']}', '{$expired_product['expiry_date']}')";
         mysqli_query($connection, $move_to_expired_query);
 
         // Delete expired product from add_stock_list
