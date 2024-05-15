@@ -131,6 +131,11 @@ if (isset($_POST['edit_btn'])) {
                                     class="form-control" placeholder="Enter Category" readonly required />
                             </div>
                             <div class="form-group">
+                                <label>Measurement</label>
+                                <input type="text" name="measurement" value="<?php echo $row['measurement'] ?>"
+                                    class="form-control" placeholder="Enter Measurement" required />
+                            </div>
+                            <div class="form-group">
                                 <label>Description</label>
                                 <input type="text" name="descript" value="<?php echo $row['descript'] ?>" class="form-control"
                                     placeholder="Enter Description" required />

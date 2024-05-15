@@ -278,6 +278,7 @@ if (isset($_POST['update_stocks_btn'])) {
     $edit_id = $_POST['edit_id'];
     $sku = $_POST['sku'];
     $descript = $_POST['descript'];
+    $measurement = $_POST['measurement'];
     $expiry_date = $_POST['expiry_date'];
     $new_quantity = $_POST['quantity'];
     $price = $_POST['price'];
@@ -310,7 +311,7 @@ if (isset($_POST['update_stocks_btn'])) {
     }
 
     // Update the edited row with the new values
-    $updateQuery = "UPDATE add_stock_list SET sku='$sku', expiry_date='$expiry_date',descript='$descript',  quantity='$new_quantity', supp_name='$supp_name', price='$price', branch='$branch' WHERE id='$edit_id'";
+    $updateQuery = "UPDATE add_stock_list SET sku='$sku', expiry_date='$expiry_date', descript='$descript', measurement='$measurement', quantity='$new_quantity', supp_name='$supp_name', price='$price', branch='$branch' WHERE id='$edit_id'";
     mysqli_query($connection, $updateQuery);
 
     if ($updateQuery) 
