@@ -357,8 +357,8 @@
                                     if ($quantity == 0) {
 
                                         // Move the data to the out_of_stock_list table
-                                        $move_to_out_of_stock_query = "INSERT INTO out_of_stock_list (sku, product_stock_name, descript, quantity, price, Supplier, branch, batch_number, expiry_date, date_added)
-                                                                       VALUES ('{$row['sku']}', '{$row['product_stock_name']}', '{$row['descript']}', '{$row['quantity']}', '{$row['price']}',  '{$row['supp_name']}', '{$row['branch']}', '{$row['batch_number']}', '{$row['expiry_date']}', '{$row['date_added']}')";
+                                        $move_to_out_of_stock_query = "INSERT INTO out_of_stock_list (sku, product_stock_name, measurement, descript, quantity, price, Supplier, branch, batch_number, expiry_date, date_added)
+                                                                       VALUES ('{$row['sku']}', '{$row['product_stock_name']}', '{$row['measurement']}', '{$row['descript']}', '{$row['quantity']}', '{$row['price']}',  '{$row['supp_name']}', '{$row['branch']}', '{$row['batch_number']}', '{$row['expiry_date']}', '{$row['date_added']}')";
                                         mysqli_query($connection, $move_to_out_of_stock_query);
 
                                         // Delete the data from the add_stock_list table

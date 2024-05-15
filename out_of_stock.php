@@ -144,7 +144,6 @@ include ('includes/header.php');
 include ('includes/navbar2.php');
 include ('notification_logic2.php');
 ?>
-
 <div class="container-fluid">
     <!-- DataTables Example -->
     <div class="card shadow nb-4">
@@ -169,6 +168,7 @@ include ('notification_logic2.php');
                         <th>ID</th>
                         <th>SKU</th>
                         <th>Product Name</th>
+                        <th>Measurement</th>
                         <th>Description</th>
                         <th>Quantity</th>
                         <th>Price</th>
@@ -185,14 +185,8 @@ include ('notification_logic2.php');
                             <tr>
                                 <td style="vertical-align: middle;"><?php echo $row['id']; ?></td>
                                 <td style="vertical-align: middle;"><?php echo $row['sku']; ?></td>
-                                <td style="vertical-align: middle;">
-                                    <?php
-                                    echo $row['product_stock_name'];
-                                    if (isset($row['measurement'])) {
-                                        echo ' - <span style="font-size: 80%;">' . $row['measurement'] . '</span>';
-                                    }
-                                    ?>
-                                </td>
+                                <td style="vertical-align: middle;"><?php echo $row['product_stock_name']; ?></td>
+                                <td style="vertical-align: middle;"><?php echo $row['measurement']; ?></td>
                                 <td style="vertical-align: middle;"><?php echo $row['descript']; ?></td>
                                 <td style="vertical-align: middle;"><?php echo $row['quantity']; ?></td>
                                 <td style="vertical-align: middle;"><?php echo $row['price']; ?></td>
@@ -242,17 +236,12 @@ include ('notification_logic2.php');
                                         ?>
                                     </div>
                                 </td>
-
-
-
                                 <td style="vertical-align: middle;"><?php echo $row['date_added']; ?></td>
-
                                 <style>
                                     .icon {
                                         position: relative;
                                         /* Ensure that the overlay is positioned relative to the td */
                                     }
-
                                     .overlay {
                                         position: absolute;
                                         background-color: black;
