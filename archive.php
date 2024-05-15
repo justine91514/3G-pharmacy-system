@@ -172,26 +172,26 @@ include ('includes/navbar2.php');
                 $query = "SELECT archive_list.id, 
                  archive_list.sku,   
                  archive_list.product_name,
+                 archive_list.measurement,
                  archive_list.descript, 
                  archive_list.quantity, 
                  archive_list.price, 
                  archive_list.supplier, 
                  archive_list.branch, 
                  archive_list.batch_number, 
-                 archive_list.expiry_date, 
-                 product_list.measurement
+                 archive_list.expiry_date
+                 
           FROM archive_list
           JOIN product_list ON archive_list.product_name = product_list.prod_name";
 
                 $query_run = mysqli_query($connection, $query);
                 ?>
-
-
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead style="background-color: #828282; color: white;">
                         <th>ID</th>
                         <th>SKU</th>
                         <th>Product Name</th>
+                        <th>Measurement</th>
                         <th>Description</th>
                         <th>Quantity</th>
                         <th>Price</th>
@@ -209,12 +209,8 @@ include ('includes/navbar2.php');
                                 <tr>
                                     <td style="vertical-align: middle;"><?php echo $row['id']; ?></td>
                                     <td style="vertical-align: middle;"><?php echo $row['sku']; ?></td>
-                                    <td style="vertical-align: middle;">
-                                        <?php echo $row['product_name']; ?> -
-                                        <span style='font-size: 80%;'>
-                                            <?php echo $row['measurement']; ?>
-                                        </span>
-                                    </td>
+                                    <td style="vertical-align: middle;"><?php echo $row['product_name']; ?></td>
+                                    <td style="vertical-align: middle;"><?php echo $row['measurement']; ?></td>
                                     <td style="vertical-align: middle;"><?php echo $row['descript']; ?></td>
                                     <td style="vertical-align: middle;"><?php echo $row['quantity']; ?></td>
                                     <td style="vertical-align: middle;"><?php echo $row['price']; ?></td>
