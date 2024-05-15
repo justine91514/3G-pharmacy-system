@@ -534,7 +534,6 @@ error_reporting(E_ALL);
                                         $('#outOfStockModal').modal('show');
                                         return; // Stop further execution
                                     }
-
                                     $('#descript').val(responseData[0].descript);
                                     $('#price').val(responseData[0].price);
                                     $('#product_stock_name').val(productNameWithMeasurement);

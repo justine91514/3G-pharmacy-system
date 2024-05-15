@@ -4,11 +4,10 @@ if (isset($_POST['input'])) {
 
     $input = $_POST['input'];
 
-    $query = "SELECT add_stock_list.*, product_list.measurement, product_list.prod_code 
+    $query = "SELECT add_stock_list.*, product_list.prod_code 
           FROM add_stock_list
           JOIN product_list ON add_stock_list.product_stock_name = product_list.prod_name
           WHERE add_stock_list.sku LIKE '{$input}%'";
-
 
     $result = mysqli_query($connection, $query);
 
@@ -35,8 +34,6 @@ if (isset($_POST['input'])) {
                         <td>{$stocks_available}</td>
                         <td>{$price}</td>
                     </tr>";
-        
-
             // Add data to response array
             $response[] = array(
                 'descript' => $descript,
