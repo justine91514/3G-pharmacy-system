@@ -334,3 +334,10 @@ Item: Youngs Town, Quantity: 1
 Quantities updated successfully.
 Item: Youngs Town, Quantity: 1
 Quantities updated successfully.
+Item: Youngs Town, Quantity: 1
+Quantities updated successfully.
+Item: Tomato Paste, Quantity: 1
+Quantities updated successfully.
+Item: Tomato Paste, Quantity: 4
+Item: Pineapple Tidbits, Quantity: 1
+Quantities updated successfully.

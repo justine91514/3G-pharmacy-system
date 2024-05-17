@@ -78,6 +78,26 @@ $query_run = mysqli_query($connection, $query);
         /* Adjust the value as needed */
     }
 </style>
+<style>
+    .list-items-wrapper {
+        position: relative;
+    }
+
+    .list-items-short,
+    .list-items-full {
+        display: inline;
+    }
+
+    .see-more {
+        color: #007bff;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .see-more:hover {
+        text-decoration: none;
+    }
+</style>
 
 </html>
 <div class="container-fluid">
@@ -122,42 +142,52 @@ $query_run = mysqli_query($connection, $query);
                         <th style="vertical-align: middle;"> Reissue of Reciept </th>
                     </thead>
                     <tbody>
-                        <?php
-                        if (mysqli_num_rows($query_run) > 0) {
-                            while ($row = mysqli_fetch_assoc($query_run)) {
-                                ?>
-                                <tr>
-                                    <td style="vertical-align: middle;"> <?php echo $row['transaction_no']; ?></td>
-                                    <td style="vertical-align: middle;"> <?php echo $row['date']; ?></td>
-                                    <td style="vertical-align: middle;"> <?php echo $row['time_with_am_pm']; ?></td>
-                                    <td style="vertical-align: middle;"> <?php echo $row['mode_of_payment']; ?></td>
-                                    <td style="vertical-align: middle;"> <?php echo $row['ref_no']; ?></td>
-                                    <td style="vertical-align: middle;"> <?php echo $row['list_of_items']; ?></td>
-                                    <td style="vertical-align: middle;"> <?php echo $row['sub_total']; ?></td>
-                                    <td style="vertical-align: middle;"> <?php echo $row['total_amount']; ?></td>
-                                    <td style="vertical-align: middle;"> <?php echo $row['cashier_name']; ?></td>
-                                    <td style="vertical-align: middle;"> <?php echo $row['branch']; ?></td>
-                                    
-                                    <td style="margin-top: 50px;">
-                                        <form action="print_receipt.php" method="post">
-                                            <input type="hidden" name="print_id" value="<?php echo $row['transaction_id']; ?>">
-                                            <button type="submit" class="btn btn-action"
-                                                style="border: none; background: none; line-height: 1;">
-                                                <i class="fas fa-print" style="color: #0000FF; margin-top: 15px;"></i>
-                                            </button>
-                                        </form>
+    <?php
+    if (mysqli_num_rows($query_run) > 0) {
+        while ($row = mysqli_fetch_assoc($query_run)) {
+            $list_of_items = $row['list_of_items'];
+            $item_limit = 40; // Character limit to show before "See More"
+            ?>
+            <tr>
+                <td style="vertical-align: middle;"> <?php echo $row['transaction_no']; ?></td>
+                <td style="vertical-align: middle;"> <?php echo $row['date']; ?></td>
+                <td style="vertical-align: middle;"> <?php echo $row['time_with_am_pm']; ?></td>
+                <td style="vertical-align: middle;"> <?php echo $row['mode_of_payment']; ?></td>
+                <td style="vertical-align: middle;"> <?php echo $row['ref_no']; ?></td>
+                <td style="vertical-align: middle;">
+                    <div class="list-items-wrapper">
+                        <div class="list-items-short">
+                            <?php echo strlen($list_of_items) > $item_limit ? substr($list_of_items, 0, $item_limit) . '...' : $list_of_items; ?>
+                        </div>
+                        <?php if (strlen($list_of_items) > $item_limit): ?>
+                        <div class="list-items-full" style="display: none;">
+                            <?php echo $list_of_items; ?>
+                        </div>
+                        <a href="#" class="see-more">See More</a>
+                        <?php endif; ?>
+                    </div>
+                </td>
+                <td style="vertical-align: middle;"> <?php echo $row['sub_total']; ?></td>
+                <td style="vertical-align: middle;"> <?php echo $row['total_amount']; ?></td>
+                <td style="vertical-align: middle;"> <?php echo $row['cashier_name']; ?></td>
+                <td style="vertical-align: middle;"> <?php echo $row['branch']; ?></td>
+                <td style="margin-top: 50px;">
+                    <form action="print_receipt.php" method="post">
+                        <input type="hidden" name="print_id" value="<?php echo $row['transaction_id']; ?>">
+                        <button type="submit" class="btn btn-action" style="border: none; background: none; line-height: 1;">
+                            <i class="fas fa-print" style="color: #0000FF; margin-top: 15px;"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <?php
+        }
+    } else {
+        echo "No record Found";
+    }
+    ?>
+</tbody>
 
-                                    </td>
-
-                                </tr>
-                                <?php
-                            }
-                        } else {
-                            echo "No record Found";
-                        }
-                        ?>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
@@ -171,6 +201,32 @@ $query_run = mysqli_query($connection, $query);
     include ('includes/scripts.php');
     include ('includes/footer.php');
     ?>
+<script>
+    $(document).ready(function() {
+        // Initially disable the "To Date" input field
+        $('#to_date').prop('disabled', true);
+
+        // Listen for changes on the "From Date" input field
+        $('#from_date').change(function() {
+            // If a date is selected, enable the "To Date" input field
+            if ($(this).val()) {
+                $('#to_date').prop('disabled', false);
+            } else {
+                // If the "From Date" is cleared, disable the "To Date" input field again
+                $('#to_date').prop('disabled', true);
+            }
+        });
+
+        // Handle the "See More" functionality
+        $('.see-more').click(function(event) {
+            event.preventDefault();
+            var listItemsWrapper = $(this).closest('.list-items-wrapper');
+            listItemsWrapper.find('.list-items-short').toggle();
+            listItemsWrapper.find('.list-items-full').toggle();
+            $(this).text($(this).text() === 'See More' ? 'See Less' : 'See More');
+        });
+    });
+</script>
 
     <!-- DataTables JavaScript -->
     <script type="text/javascript" charset="utf8"

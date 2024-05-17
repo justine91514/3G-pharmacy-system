@@ -682,7 +682,7 @@ if (isset($_POST['add_prod_btn'])) {
     $categories = $_POST['categories'];
     $type = $_POST['type'];
     $unit = $_POST['unit'];
-    $measurement = $_POST['measurement'];
+    
     $prescription = isset($_POST['prescription']) ? 1 : 0;
     $discounted = isset($_POST['discounted']) ? 1 : 0;
 
@@ -692,7 +692,7 @@ if (isset($_POST['add_prod_btn'])) {
 
     if (mysqli_num_rows($check_result) == 0) {
         // Product does not exist, proceed with insertion
-        $query = "INSERT INTO product_list (prod_name, description, prod_code, categories, type, unit, measurement, prescription, discounted) VALUES ('$product_name', '$description', '$product_code', '$categories', '$type', '$unit', '$measurement', '$prescription', '$discounted')";
+        $query = "INSERT INTO product_list (prod_name, description, prod_code, categories, type, unit, prescription, discounted) VALUES ('$product_name', '$description', '$product_code', '$categories', '$type', '$unit','$prescription', '$discounted')";
         $query_run = mysqli_query($connection, $query);
 
         if ($query_run) {

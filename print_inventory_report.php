@@ -257,7 +257,7 @@
                 <div class="table-responsive">
 
                     <?php
-                    $query = "SELECT add_stock_list.*, product_list.measurement 
+                    $query = "SELECT add_stock_list.*
 FROM add_stock_list
 JOIN product_list ON add_stock_list.product_stock_name = product_list.prod_name
 WHERE ('$selectedBranch' = 'All' OR add_stock_list.branch = '$selectedBranch')
@@ -267,10 +267,11 @@ ORDER BY id DESC"; // Assuming 'id' is the column representing the last added it
                     ?>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead style="background-color: #304B1B; color: white;">
-                        <th style="vertical-align: middle;">ID</th>
+                            <th style="vertical-align: middle;">ID</th>
                             <th style="vertical-align: middle;">SKU</th>
                             <!-- <th style="vertical-align: middle;">Purchase Price</th> -->
                             <th style="vertical-align: middle;">Product Name</th>
+                            <th style="vertical-align: middle;">Measurement</th>
                             <th style="vertical-align: middle;">Description</th>
                             <th style="vertical-align: middle;">Quantity</th>
                             <th style="vertical-align: middle;">Price</th>
@@ -285,28 +286,30 @@ ORDER BY id DESC"; // Assuming 'id' is the column representing the last added it
                                 while ($row = mysqli_fetch_assoc($query_run)) {
                                     ?>
                                     <tr>
-                                    <td style="vertical-align: middle;"><?php echo $row['id']; ?></td>
-<td style="vertical-align: middle;"><?php echo $row['sku']; ?></td>
-<td style="vertical-align: middle;"><?php echo $row['product_stock_name']; ?> - <span style="font-size: 80%;"><?php echo $row['measurement']; ?></span></td>
-<td style="vertical-align: middle;"><?php echo $row['descript']; ?></td>
-<td style="vertical-align: middle;"><?php echo $row['quantity']; ?></td>
-<td style="vertical-align: middle;"><?php echo $row['price']; ?></td>
-<td style="vertical-align: middle;"><?php echo $row['branch']; ?></td>
-<td style="vertical-align: middle;"><?php echo $row['batch_number']; ?></td>
-<td style="vertical-align: middle; color: <?php echo getStatusColor($row['expiry_date']); ?>;">
-    <?php
-    echo $row['expiry_date'];
-    // Add Font Awesome icons based on expiration status
-    if (getStatusColor($row['expiry_date']) == 'red') {
-        echo ' <i class="fas fa-exclamation-circle" style="color: red;"></i>';
-    } elseif (getStatusColor($row['expiry_date']) == 'orange') {
-        echo ' <i class="fas fa-exclamation-triangle" style="color: orange;"></i>';
-    } elseif (getStatusColor($row['expiry_date']) == 'green') {
-        echo ' <i class="fas fa-check-circle" style="color: green;"></i>';
-    }
-    ?>
-</td>
-<td style="vertical-align: middle;"><?php echo $row['date_added']; ?></td>
+                                        <td style="vertical-align: middle;"><?php echo $row['id']; ?></td>
+                                        <td style="vertical-align: middle;"><?php echo $row['sku']; ?></td>
+                                        <td style="vertical-align: middle;"><?php echo $row['product_stock_name']; ?></></td>
+                                        <td style="vertical-align: middle;"><?php echo $row['measurement']; ?></td>
+                                        <td style="vertical-align: middle;"><?php echo $row['descript']; ?></td>
+                                        <td style="vertical-align: middle;"><?php echo $row['quantity']; ?></td>
+                                        <td style="vertical-align: middle;"><?php echo $row['price']; ?></td>
+                                        <td style="vertical-align: middle;"><?php echo $row['branch']; ?></td>
+                                        <td style="vertical-align: middle;"><?php echo $row['batch_number']; ?></td>
+                                        <td
+                                            style="vertical-align: middle; color: <?php echo getStatusColor($row['expiry_date']); ?>;">
+                                            <?php
+                                            echo $row['expiry_date'];
+                                            // Add Font Awesome icons based on expiration status
+                                            if (getStatusColor($row['expiry_date']) == 'red') {
+                                                echo ' <i class="fas fa-exclamation-circle" style="color: red;"></i>';
+                                            } elseif (getStatusColor($row['expiry_date']) == 'orange') {
+                                                echo ' <i class="fas fa-exclamation-triangle" style="color: orange;"></i>';
+                                            } elseif (getStatusColor($row['expiry_date']) == 'green') {
+                                                echo ' <i class="fas fa-check-circle" style="color: green;"></i>';
+                                            }
+                                            ?>
+                                        </td>
+                                        <td style="vertical-align: middle;"><?php echo $row['date_added']; ?></td>
 
                                         <?php
                                 }
