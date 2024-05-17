@@ -79,15 +79,6 @@ $query_run = mysqli_query($connection, $query);
     }
 </style>
 <style>
-    .list-items-wrapper {
-        position: relative;
-    }
-
-    .list-items-short,
-    .list-items-full {
-        display: inline;
-    }
-
     .see-more {
         color: #007bff;
         cursor: pointer;
@@ -98,6 +89,7 @@ $query_run = mysqli_query($connection, $query);
         text-decoration: none;
     }
 </style>
+
 
 </html>
 <div class="container-fluid">
@@ -146,7 +138,9 @@ $query_run = mysqli_query($connection, $query);
     if (mysqli_num_rows($query_run) > 0) {
         while ($row = mysqli_fetch_assoc($query_run)) {
             $list_of_items = $row['list_of_items'];
-            $item_limit = 40; // Character limit to show before "See More"
+            $max_length = 10; // Adjust this value based on your preference
+            $short_items = substr($list_of_items, 0, $max_length);
+            $needs_see_more = strlen($list_of_items) > $max_length;
             ?>
             <tr>
                 <td style="vertical-align: middle;"> <?php echo $row['transaction_no']; ?></td>
@@ -155,17 +149,11 @@ $query_run = mysqli_query($connection, $query);
                 <td style="vertical-align: middle;"> <?php echo $row['mode_of_payment']; ?></td>
                 <td style="vertical-align: middle;"> <?php echo $row['ref_no']; ?></td>
                 <td style="vertical-align: middle;">
-                    <div class="list-items-wrapper">
-                        <div class="list-items-short">
-                            <?php echo strlen($list_of_items) > $item_limit ? substr($list_of_items, 0, $item_limit) . '...' : $list_of_items; ?>
-                        </div>
-                        <?php if (strlen($list_of_items) > $item_limit): ?>
-                        <div class="list-items-full" style="display: none;">
-                            <?php echo $list_of_items; ?>
-                        </div>
+                    <span class="short-items"><?php echo htmlspecialchars($short_items); ?></span>
+                    <?php if ($needs_see_more) { ?>
+                        <span class="more-items" style="display: none;"><?php echo htmlspecialchars($list_of_items); ?></span>
                         <a href="#" class="see-more">See More</a>
-                        <?php endif; ?>
-                    </div>
+                    <?php } ?>
                 </td>
                 <td style="vertical-align: middle;"> <?php echo $row['sub_total']; ?></td>
                 <td style="vertical-align: middle;"> <?php echo $row['total_amount']; ?></td>
@@ -183,10 +171,11 @@ $query_run = mysqli_query($connection, $query);
             <?php
         }
     } else {
-        echo "No record Found";
+        echo "<tr><td colspan='11'>No record Found</td></tr>";
     }
     ?>
 </tbody>
+
 
             </div>
         </div>
@@ -202,31 +191,27 @@ $query_run = mysqli_query($connection, $query);
     include ('includes/footer.php');
     ?>
 <script>
-    $(document).ready(function() {
-        // Initially disable the "To Date" input field
-        $('#to_date').prop('disabled', true);
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.see-more').forEach(function (seeMoreLink) {
+            seeMoreLink.addEventListener('click', function (event) {
+                event.preventDefault();
+                var shortItems = this.previousElementSibling.previousElementSibling;
+                var moreItems = this.previousElementSibling;
 
-        // Listen for changes on the "From Date" input field
-        $('#from_date').change(function() {
-            // If a date is selected, enable the "To Date" input field
-            if ($(this).val()) {
-                $('#to_date').prop('disabled', false);
-            } else {
-                // If the "From Date" is cleared, disable the "To Date" input field again
-                $('#to_date').prop('disabled', true);
-            }
-        });
-
-        // Handle the "See More" functionality
-        $('.see-more').click(function(event) {
-            event.preventDefault();
-            var listItemsWrapper = $(this).closest('.list-items-wrapper');
-            listItemsWrapper.find('.list-items-short').toggle();
-            listItemsWrapper.find('.list-items-full').toggle();
-            $(this).text($(this).text() === 'See More' ? 'See Less' : 'See More');
+                if (moreItems.style.display === 'none') {
+                    moreItems.style.display = 'inline';
+                    shortItems.style.display = 'none';
+                    this.textContent = 'See Less';
+                } else {
+                    moreItems.style.display = 'none';
+                    shortItems.style.display = 'inline';
+                    this.textContent = 'See More';
+                }
+            });
         });
     });
 </script>
+
 
     <!-- DataTables JavaScript -->
     <script type="text/javascript" charset="utf8"
