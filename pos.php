@@ -190,8 +190,6 @@ error_reporting(E_ALL);
         </div>
     </div>
 </div>
-
-
 <!-- Maximum Quantity Reached Modal -->
 <div class="modal fade" id="maxQuantityModal" tabindex="-1" role="dialog" aria-labelledby="maxQuantityModalLabel"
     aria-hidden="true">
@@ -533,7 +531,7 @@ error_reporting(E_ALL);
                                         // Display out of stock modal
                                         $('#outOfStockModal').modal('show');
                                         return; // Stop further execution
-                                    }nnna
+                                    }
                                     $('#descript').val(responseData[0].descript);
                                     $('#price').val(responseData[0].price);
                                     $('#product_stock_name').val(productNameWithMeasurement);
@@ -552,7 +550,7 @@ error_reporting(E_ALL);
                                         if (quantityInput < stocksAvailable) {
                                             scannedProducts[productNameWithMeasurement]++;
                                             $('#quantity').val(scannedProducts[productNameWithMeasurement]);
-                                            $('a#scannedItems td:contains("' + productNameWithMeasurement + '")').next().text(scannedProducts[productNameWithMeasurement]);
+                                            $('#scannedItems td:contains("' + productNameWithMeasurement + '")').next().text(scannedProducts[productNameWithMeasurement]);
                                         } else {
                                             // Show modal or alert indicating that stock limit is reached
                                             $('#maxQuantityModal').modal('show');
