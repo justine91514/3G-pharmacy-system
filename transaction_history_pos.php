@@ -88,22 +88,24 @@ $query_run = mysqli_query($connection, $query);
         </div>
         <div class="card-body">
 
-        <form action="" method="post">
-        <div class="form-group row" style="margin-top: 20px;">
-        <div class="col">
-        <label for="from_date"><strong>From:</strong></label>
-            <input type="date" id="from_date" name="from_date" class="form-control" placeholder="From Date" required>
-        </div>
-        <div class="col">
-        <label for="to_date"><strong>To:</strong></label>
-            <input type="date" id="to_date" name="to_date" class="form-control"  placeholder="To Date"
-                                required disabled>
-        </div>
-        <div class="col">
-        <button type="submit" name="filter_date" class="btn btn-primary"  style="border-radius: 5px; padding: 10px 20px; background-color: #304B1B; border: none; box-shadow: none; margin-top: 28px;">Filter</button>
-        </div>
-        </div>
-    </form>
+            <form action="" method="post">
+                <div class="form-group row" style="margin-top: 20px;">
+                    <div class="col">
+                        <label for="from_date"><strong>From:</strong></label>
+                        <input type="date" id="from_date" name="from_date" class="form-control" placeholder="From Date"
+                            required>
+                    </div>
+                    <div class="col">
+                        <label for="to_date"><strong>To:</strong></label>
+                        <input type="date" id="to_date" name="to_date" class="form-control" placeholder="To Date"
+                            required disabled>
+                    </div>
+                    <div class="col">
+                        <button type="submit" name="filter_date" class="btn btn-primary"
+                            style="border-radius: 5px; padding: 10px 20px; background-color: #304B1B; border: none; box-shadow: none; margin-top: 28px;">Filter</button>
+                    </div>
+                </div>
+            </form>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead style="background-color: #304B1B; color: white;">
@@ -120,47 +122,50 @@ $query_run = mysqli_query($connection, $query);
                         <th style="vertical-align: middle;"> Reissue of Reciept </th>
                     </thead>
                     <tbody>
-    <?php
-    if (mysqli_num_rows($query_run) > 0) {
-        while ($row = mysqli_fetch_assoc($query_run)) {
-            $list_of_items = $row['list_of_items'];
-            $max_length = 30; // Adjust this value based on your preference
-            $short_items = substr($list_of_items, 0, $max_length);
-            $needs_see_more = strlen($list_of_items) > $max_length;
-            ?>
-            <tr>
-                <td style="vertical-align: middle;"> <?php echo $row['transaction_no']; ?></td>
-                <td style="vertical-align: middle;"> <?php echo $row['date']; ?></td>
-                <td style="vertical-align: middle;"> <?php echo $row['time_with_am_pm']; ?></td>
-                <td style="vertical-align: middle;"> <?php echo $row['mode_of_payment']; ?></td>
-                <td style="vertical-align: middle;"> <?php echo $row['ref_no']; ?></td>
-                <td style="vertical-align: middle;">
-                    <span class="short-items"><?php echo htmlspecialchars($short_items); ?></span>
-                    <?php if ($needs_see_more) { ?>
-                        <span class="more-items" style="display: none;"><?php echo htmlspecialchars($list_of_items); ?></span>
-                        <a href="#" class="see-more" data-items="<?php echo htmlspecialchars($list_of_items); ?>">See More</a>
-                    <?php } ?>
-                </td>
-                <td style="vertical-align: middle;"> <?php echo $row['sub_total']; ?></td>
-                <td style="vertical-align: middle;"> <?php echo $row['total_amount']; ?></td>
-                <td style="vertical-align: middle;"> <?php echo $row['cashier_name']; ?></td>
-                <td style="vertical-align: middle;"> <?php echo $row['branch']; ?></td>
-                <td style="margin-top: 50px;">
-                    <form action="print_receipt.php" method="post">
-                        <input type="hidden" name="print_id" value="<?php echo $row['transaction_id']; ?>">
-                        <button type="submit" class="btn btn-action" style="border: none; background: none; line-height: 1;">
-                            <i class="fas fa-print" style="color: #0000FF; margin-top: 15px;"></i>
-                        </button>
-                    </form>
-                </td>
-            </tr>
-            <?php
-        }
-    } else {
-        echo "<tr><td colspan='11'>No record Found</td></tr>";
-    }
-    ?>
-</tbody>
+                        <?php
+                        if (mysqli_num_rows($query_run) > 0) {
+                            while ($row = mysqli_fetch_assoc($query_run)) {
+                                $list_of_items = $row['list_of_items'];
+                                $max_length = 30; // Adjust this value based on your preference
+                                $short_items = substr($list_of_items, 0, $max_length);
+                                $needs_see_more = strlen($list_of_items) > $max_length;
+                                ?>
+                                <tr>
+                                    <td style="vertical-align: middle;"> <?php echo $row['transaction_no']; ?></td>
+                                    <td style="vertical-align: middle;"> <?php echo $row['date']; ?></td>
+                                    <td style="vertical-align: middle;"> <?php echo $row['time_with_am_pm']; ?></td>
+                                    <td style="vertical-align: middle;"> <?php echo $row['mode_of_payment']; ?></td>
+                                    <td style="vertical-align: middle;"> <?php echo $row['ref_no']; ?></td>
+                                    <td style="vertical-align: middle;">
+                                        <span class="short-items"><?php echo htmlspecialchars($short_items); ?></span>
+                                        <?php if ($needs_see_more) { ?>
+                                            <span class="more-items"
+                                                style="display: none;"><?php echo htmlspecialchars($list_of_items); ?></span>
+                                            <a href="#" class="see-more"
+                                                data-items="<?php echo htmlspecialchars($list_of_items); ?>">See More</a>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="vertical-align: middle;"> <?php echo $row['sub_total']; ?></td>
+                                    <td style="vertical-align: middle;"> <?php echo $row['total_amount']; ?></td>
+                                    <td style="vertical-align: middle;"> <?php echo $row['cashier_name']; ?></td>
+                                    <td style="vertical-align: middle;"> <?php echo $row['branch']; ?></td>
+                                    <td style="margin-top: 50px;">
+                                        <form action="print_receipt.php" method="post">
+                                            <input type="hidden" name="print_id" value="<?php echo $row['transaction_id']; ?>">
+                                            <button type="submit" class="btn btn-action"
+                                                style="border: none; background: none; line-height: 1;">
+                                                <i class="fas fa-print" style="color: #0000FF; margin-top: 15px;"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                        } else {
+                            echo "<tr><td colspan='11'>No record Found</td></tr>";
+                        }
+                        ?>
+                    </tbody>
 
 
             </div>
@@ -168,7 +173,8 @@ $query_run = mysqli_query($connection, $query);
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="itemsModal" tabindex="-1" role="dialog" aria-labelledby="itemsModalLabel" aria-hidden="true">
+    <div class="modal fade" id="itemsModal" tabindex="-1" role="dialog" aria-labelledby="itemsModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -196,7 +202,7 @@ $query_run = mysqli_query($connection, $query);
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#dataTable').DataTable({
                 "paging": true,
                 "lengthChange": true,
@@ -223,7 +229,7 @@ $query_run = mysqli_query($connection, $query);
             $('#to_date').prop('disabled', true);
 
             // Enable "To Date" input field based on "From Date" input
-            $('#from_date').change(function() {
+            $('#from_date').change(function () {
                 if ($(this).val()) {
                     $('#to_date').prop('disabled', false);
                 } else {
@@ -232,7 +238,7 @@ $query_run = mysqli_query($connection, $query);
             });
 
             // Show modal with full list of items
-            $('.see-more').click(function(event) {
+            $('.see-more').click(function (event) {
                 event.preventDefault();
                 var items = $(this).data('items');
                 $('#modalItemsContent').text(items);

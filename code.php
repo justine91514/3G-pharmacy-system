@@ -676,13 +676,10 @@ if(isset($_POST['discountbtn']))
 // ADD BUTTONS
 if (isset($_POST['add_prod_btn'])) {
     // Retrieve form data
-    $product_name = $_POST['prod_name'];
-    $description = $_POST['description'];
-    $product_code = $_POST['prod_code'];
+    $product_name = mysqli_real_escape_string($connection, $_POST['prod_name']);
     $categories = $_POST['categories'];
     $type = $_POST['type'];
     $unit = $_POST['unit'];
-    
     $prescription = isset($_POST['prescription']) ? 1 : 0;
     $discounted = isset($_POST['discounted']) ? 1 : 0;
 
@@ -692,7 +689,7 @@ if (isset($_POST['add_prod_btn'])) {
 
     if (mysqli_num_rows($check_result) == 0) {
         // Product does not exist, proceed with insertion
-        $query = "INSERT INTO product_list (prod_name, description, prod_code, categories, type, unit, prescription, discounted) VALUES ('$product_name', '$description', '$product_code', '$categories', '$type', '$unit','$prescription', '$discounted')";
+        $query = "INSERT INTO product_list (prod_name, categories, type, unit, prescription, discounted) VALUES ('$product_name', '$categories', '$type', '$unit','$prescription', '$discounted')";
         $query_run = mysqli_query($connection, $query);
 
         if ($query_run) {
@@ -716,7 +713,7 @@ if (isset($_POST['add_prod_btn'])) {
 if (isset($_POST['add_stock_btn'])) {
     // Get data from the form
     $sku = $_POST['sku'];
-    $product_name = $_POST['product_stock_name'];
+    $product_name = mysqli_real_escape_string($connection, $_POST['product_stock_name']);
     $measurement= $_POST['measurement'];
     $descript = $_POST['descript'];
     $quantity = $_POST['quantity'];

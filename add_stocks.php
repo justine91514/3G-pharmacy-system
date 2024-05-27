@@ -126,13 +126,7 @@
         $suppNames[] = $row['supplier_name'];
     }
 
-    $query = "SELECT description FROM product_list";
-    $query_run = mysqli_query($connection, $query);
-    $descNames = array();
-    while ($row = mysqli_fetch_assoc($query_run)) {
-        $descNames[] = $row['description'];
-    }
-
+    
 
 
 
@@ -183,7 +177,7 @@
 
         // Loop through the result to update stocks available in the product_list table
         while ($row = mysqli_fetch_assoc($result)) {
-            $product_stock_name = $row['product_stock_name'];
+             $product_stock_name = mysqli_real_escape_string($connection, $row['product_stock_name']);
             $total_stocks = $row['total_stocks'];
 
             // Query to update stocks available in the product_list table
@@ -215,19 +209,15 @@
                             <select name="product_stock_name" class="form-control" required disabled>
                                 <option value="">Select Product</option> <!-- Empty option -->
                                 <?php
-                                foreach ($productNames as $productName) {
-                                    $query = "SELECT * FROM product_list WHERE prod_name='$productName'";
-                                    $query_run = mysqli_query($connection, $query);
-                                    $productInfo = mysqli_fetch_assoc($query_run);
+        foreach ($productNames as $productName) {
+            // htmlspecialchars to handle special characters
+            $escapedProductName = htmlspecialchars($productName, ENT_QUOTES, 'UTF-8');
 
-                                    $selected = ($selectedProduct == $productName) ? 'selected' : '';
-                                    echo "<option value='$productName' $selected>
-                      $productName </span>
-                  </option>";
-                                }
-                                ?>
-                            </select>
-                        </div>
+            echo "<option value='$escapedProductName'>$escapedProductName</option>";
+        }
+        ?>
+    </select>
+</div>
                         <div class="form-group">
                             <label>Measurement</label>
                             <input type="text" name="measurement" class="form-control" placeholder="Input Measurement"
