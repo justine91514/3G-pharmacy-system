@@ -126,7 +126,13 @@
         $suppNames[] = $row['supplier_name'];
     }
 
-    
+    $query = "SELECT description FROM product_list";
+    $query_run = mysqli_query($connection, $query);
+    $descNames = array();
+    while ($row = mysqli_fetch_assoc($query_run)) {
+        $descNames[] = $row['description'];
+    }
+
 
 
 
@@ -139,8 +145,8 @@
 
     while ($expired_product = mysqli_fetch_assoc($expired_products_result)) {
         // Move expired product to expired_list
-        $move_to_expired_query = "INSERT INTO expired_list (sku, product_name, measurement, descript, quantity, price, Supplier, expiry_date)
-                             VALUES ('{$expired_product['sku']}', '{$expired_product['product_stock_name']}', '{$expired_product['measurement']}',  '{$expired_product['descript']}',  '{$expired_product['quantity']}', '{$expired_product['price']}', '{$expired_product['supp_name']}', '{$expired_product['expiry_date']}')";
+        $move_to_expired_query = "INSERT INTO expired_list (sku, product_name, descript, quantity, price, Supplier, expiry_date)
+                             VALUES ('{$expired_product['sku']}', '{$expired_product['product_stock_name']}','{$expired_product['descript']}',  '{$expired_product['quantity']}', '{$expired_product['price']}', '{$expired_product['supp_name']}', '{$expired_product['expiry_date']}')";
         mysqli_query($connection, $move_to_expired_query);
 
         // Delete expired product from add_stock_list
@@ -177,7 +183,7 @@
 
         // Loop through the result to update stocks available in the product_list table
         while ($row = mysqli_fetch_assoc($result)) {
-             $product_stock_name = mysqli_real_escape_string($connection, $row['product_stock_name']);
+            $product_stock_name = $row['product_stock_name'];
             $total_stocks = $row['total_stocks'];
 
             // Query to update stocks available in the product_list table
@@ -209,19 +215,18 @@
                             <select name="product_stock_name" class="form-control" required disabled>
                                 <option value="">Select Product</option> <!-- Empty option -->
                                 <?php
-        foreach ($productNames as $productName) {
-            // htmlspecialchars to handle special characters
-            $escapedProductName = htmlspecialchars($productName, ENT_QUOTES, 'UTF-8');
-
-            echo "<option value='$escapedProductName'>$escapedProductName</option>";
-        }
-        ?>
-    </select>
-</div>
-                        <div class="form-group">
-                            <label>Measurement</label>
-                            <input type="text" name="measurement" class="form-control" placeholder="Input Measurement"
-                                required disabled />
+                                foreach ($productNames as $productName) {
+                                    $query = "SELECT * FROM product_list WHERE prod_name='$productName'";
+                                    $query_run = mysqli_query($connection, $query);
+                                    $productInfo = mysqli_fetch_assoc($query_run);
+                                    $measurement = $productInfo['measurement'];
+                                    $selected = ($selectedProduct == $productName) ? 'selected' : '';
+                                    echo "<option value='$productName' data-measurement='$measurement' $selected>
+                      $productName - <span style='font-size: 80%;'>$measurement</span>
+                  </option>";
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Description</label>
@@ -314,10 +319,10 @@
                 </div>
                 <div class="table-responsive" style="max-width: 100%; overflow-x: auto;">
                     <?php
-                    $query = "SELECT add_stock_list.*
-                   FROM add_stock_list
-                   JOIN product_list ON add_stock_list.product_stock_name = product_list.prod_name
-                   WHERE ('$selectedBranch' = 'All' OR add_stock_list.branch = '$selectedBranch')";
+                    $query = "SELECT add_stock_list.*, product_list.measurement 
+                            FROM add_stock_list
+                            JOIN product_list ON add_stock_list.product_stock_name = product_list.prod_name
+                            WHERE ('$selectedBranch' = 'All' OR add_stock_list.branch = '$selectedBranch')";
                     $query_run = mysqli_query($connection, $query);
                     ?>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -326,7 +331,6 @@
                             <th style="vertical-align: middle;">SKU</th>
                             <!-- <th style="vertical-align: middle;">Purchase Price</th> -->
                             <th style="vertical-align: middle;">Product Name</th>
-                            <th style="vertical-align: middle;">Measurement</th>
                             <th style="vertical-align: middle;">Description</th>
                             <th style="vertical-align: middle;">Quantity</th>
                             <th style="vertical-align: middle;">Price</th>
@@ -347,8 +351,8 @@
                                     if ($quantity == 0) {
 
                                         // Move the data to the out_of_stock_list table
-                                        $move_to_out_of_stock_query = "INSERT INTO out_of_stock_list (sku, product_stock_name, measurement, descript, quantity, price, Supplier, branch, batch_number, expiry_date, date_added)
-                                                                       VALUES ('{$row['sku']}', '{$row['product_stock_name']}', '{$row['measurement']}', '{$row['descript']}', '{$row['quantity']}', '{$row['price']}',  '{$row['supp_name']}', '{$row['branch']}', '{$row['batch_number']}', '{$row['expiry_date']}', '{$row['date_added']}')";
+                                        $move_to_out_of_stock_query = "INSERT INTO out_of_stock_list (sku, product_stock_name, descript, quantity, price, Supplier, branch, batch_number, expiry_date, date_added)
+                                                                       VALUES ('{$row['sku']}', '{$row['product_stock_name']}', '{$row['descript']}', '{$row['quantity']}', '{$row['price']}',  '{$row['supp_name']}', '{$row['branch']}', '{$row['batch_number']}', '{$row['expiry_date']}', '{$row['date_added']}')";
                                         mysqli_query($connection, $move_to_out_of_stock_query);
 
                                         // Delete the data from the add_stock_list table
@@ -361,8 +365,7 @@
                                         echo '<tr>';
                                         echo '<td style="vertical-align: middle;">' . $row['id'] . '</td>';
                                         echo '<td style="vertical-align: middle;">' . $row['sku'] . '</td>';
-                                        echo '<td style="vertical-align: middle;">' . $row['product_stock_name'] . '</td>';
-                                        echo '<td style="vertical-align: middle;">' . $row['measurement'] . '</td>';
+                                        echo '<td style="vertical-align: middle;">' . $row['product_stock_name'] . ' - <span style="font-size: 80%;">' . $row['measurement'] . '</span></td>';
                                         echo '<td style="vertical-align: middle;">' . $row['descript'] . '</td>';
                                         echo '<td style="vertical-align: middle;">';
                                         if ($row['quantity'] < 20) {
@@ -528,8 +531,6 @@
     document.getElementById('sku_input').addEventListener('input', function () {
         var sku = this.value.trim();
         var productNameField = document.querySelector('[name="product_stock_name"]');
-        var measureField = document.querySelector('[name="measurement"]');
-        var quantityField = document.querySelector('[name="quantity"]');
         var descriptionField = document.querySelector('[name="descript"]');
         var quantityField = document.querySelector('[name="quantity"]');
         var priceField = document.querySelector('[name="price"]');
@@ -539,7 +540,6 @@
 
         if (sku) {
             productNameField.removeAttribute('disabled');
-            measureField.removeAttribute('disabled');
             descriptionField.removeAttribute('disabled');
             quantityField.removeAttribute('disabled');
             priceField.removeAttribute('disabled');
@@ -548,7 +548,6 @@
             expiryDateField.removeAttribute('disabled');
         } else {
             productNameField.setAttribute('disabled', 'disabled');
-            measureField.removeAttribute('disabled', 'disabled');
             descriptionField.setAttribute('disabled', 'disabled');
             quantityField.setAttribute('disabled', 'disabled');
             priceField.setAttribute('disabled', 'disabled');

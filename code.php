@@ -278,7 +278,6 @@ if (isset($_POST['update_stocks_btn'])) {
     $edit_id = $_POST['edit_id'];
     $sku = $_POST['sku'];
     $descript = $_POST['descript'];
-    $measurement = $_POST['measurement'];
     $expiry_date = $_POST['expiry_date'];
     $new_quantity = $_POST['quantity'];
     $price = $_POST['price'];
@@ -311,7 +310,7 @@ if (isset($_POST['update_stocks_btn'])) {
     }
 
     // Update the edited row with the new values
-    $updateQuery = "UPDATE add_stock_list SET sku='$sku', expiry_date='$expiry_date', descript='$descript', measurement='$measurement', quantity='$new_quantity', supp_name='$supp_name', price='$price', branch='$branch' WHERE id='$edit_id'";
+    $updateQuery = "UPDATE add_stock_list SET sku='$sku', expiry_date='$expiry_date',descript='$descript',  quantity='$new_quantity', supp_name='$supp_name', price='$price', branch='$branch' WHERE id='$edit_id'";
     mysqli_query($connection, $updateQuery);
 
     if ($updateQuery) 
@@ -676,10 +675,13 @@ if(isset($_POST['discountbtn']))
 // ADD BUTTONS
 if (isset($_POST['add_prod_btn'])) {
     // Retrieve form data
-    $product_name = mysqli_real_escape_string($connection, $_POST['prod_name']);
+    $product_name = $_POST['prod_name'];
+    $description = $_POST['description'];
+    $product_code = $_POST['prod_code'];
     $categories = $_POST['categories'];
     $type = $_POST['type'];
     $unit = $_POST['unit'];
+    $measurement = $_POST['measurement'];
     $prescription = isset($_POST['prescription']) ? 1 : 0;
     $discounted = isset($_POST['discounted']) ? 1 : 0;
 
@@ -689,7 +691,7 @@ if (isset($_POST['add_prod_btn'])) {
 
     if (mysqli_num_rows($check_result) == 0) {
         // Product does not exist, proceed with insertion
-        $query = "INSERT INTO product_list (prod_name, categories, type, unit, prescription, discounted) VALUES ('$product_name', '$categories', '$type', '$unit','$prescription', '$discounted')";
+        $query = "INSERT INTO product_list (prod_name, description, prod_code, categories, type, unit, measurement, prescription, discounted) VALUES ('$product_name', '$description', '$product_code', '$categories', '$type', '$unit', '$measurement', '$prescription', '$discounted')";
         $query_run = mysqli_query($connection, $query);
 
         if ($query_run) {
@@ -713,9 +715,8 @@ if (isset($_POST['add_prod_btn'])) {
 if (isset($_POST['add_stock_btn'])) {
     // Get data from the form
     $sku = $_POST['sku'];
-    $product_name = mysqli_real_escape_string($connection, $_POST['product_stock_name']);
-    $measurement= $_POST['measurement'];
-    $descript = $_POST['descript'];
+    $product_name = $_POST['product_stock_name'];
+    $description = $_POST['description'];
     $quantity = $_POST['quantity'];
     $price = $_POST['price'];
     $supplier = $_POST['supp_name'];
@@ -754,8 +755,8 @@ if (isset($_POST['add_stock_btn'])) {
     $batch_number = date('ymd') . $new_batch_count_padded;
 
     // Execute query to add stock
-    $add_stock_query = "INSERT INTO add_stock_list (sku, product_stock_name, measurement, descript, quantity, price, supp_name, branch, expiry_date, date_added, batch_number)
-                        VALUES ('$sku', '$product_name', '$measurement', '$descript', '$quantity', '$price', '$supplier', '$branch', '$expiry_date', '$date_added', '$batch_number')";
+    $add_stock_query = "INSERT INTO add_stock_list (sku, product_stock_name, descript, quantity, price, supp_name, branch, expiry_date, date_added, batch_number)
+                        VALUES ('$sku', '$product_name', '$description', '$quantity', '$price', '$supplier', '$branch', '$expiry_date', '$date_added', '$batch_number')";
     $add_stock_result = mysqli_query($connection, $add_stock_query);
 
     if ($add_stock_result) {
@@ -873,8 +874,8 @@ if (isset($_POST['restore_btn'])) {
 
         // Restore the data to the add_stock_list table
         $current_date = date('Y-m-d H:i:s');
-        $restore_query = "INSERT INTO add_stock_list (id, sku, product_stock_name, measurement, descript, quantity, price, supp_name, branch, batch_number, expiry_date, date_added)
-        VALUES ('{$row['id']}', '{$row['sku']}', '$product_name', '{$row['measurement']}', '{$row['descript']}', '{$row['quantity']}',  '{$row['price']}', '{$row['supplier']}','{$row['branch']}','{$row['batch_number']}', '{$row['expiry_date']}', '$current_date')";
+        $restore_query = "INSERT INTO add_stock_list (id, sku, product_stock_name, descript, quantity, price, supp_name, branch, batch_number, expiry_date, date_added)
+        VALUES ('{$row['id']}', '{$row['sku']}', '$product_name', '{$row['descript']}' , '{$row['quantity']}',  '{$row['price']}', '{$row['supplier']}','{$row['branch']}','{$row['batch_number']}', '{$row['expiry_date']}', '$current_date')";
         mysqli_query($connection, $restore_query);
 
         // Update the stocks_available in add_stock_list

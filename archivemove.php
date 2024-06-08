@@ -12,8 +12,8 @@ if (isset($_POST['archive_id'])) {
 
     // Insert the data into archive_list including the id
 
-    $insert_query = "INSERT INTO archive_list (id, sku, product_name, measurement, descript, quantity, price, supplier, branch, batch_number, expiry_date) 
-    VALUES ('{$row['id']}', '{$row['sku']}', '{$row['product_stock_name']}','{$row['measurement']}',  '{$row['descript']}', '{$row['quantity']}', '{$row['price']}', '{$row['supp_name']}',   '{$row['branch']}', '{$row['batch_number']}', '{$row['expiry_date']}')";
+    $insert_query = "INSERT INTO archive_list (id, sku, product_name, descript, quantity, price, supplier, branch, batch_number, expiry_date) 
+    VALUES ('{$row['id']}', '{$row['sku']}', '{$row['product_stock_name']}', '{$row['descript']}', '{$row['quantity']}', '{$row['price']}', '{$row['supp_name']}',   '{$row['branch']}', '{$row['batch_number']}', '{$row['expiry_date']}')";
     mysqli_query($connection, $insert_query);
 
 

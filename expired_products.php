@@ -161,7 +161,7 @@ include ('notification_logic2.php');
                 $connection = mysqli_connect("localhost", "root", "", "dbpharmacy");
 
                 // Fetch data from the database
-                $query = "SELECT expired_list.*
+                $query = "SELECT expired_list.*, product_list.measurement 
                           FROM expired_list
                           JOIN product_list ON expired_list.product_name = product_list.prod_name";
                 $result = mysqli_query($connection, $query);
@@ -171,7 +171,6 @@ include ('notification_logic2.php');
                         <th>ID</th>
                         <th>SKU</th>
                         <th>Product Name</th>
-                        <th>Measurement</th>
                         <th>Description</th>
                         <th>Quantity</th>
 
@@ -187,8 +186,14 @@ include ('notification_logic2.php');
                             <tr>
                                 <td style="vertical-align: middle;"><?php echo $row['id']; ?></td>
                                 <td style="vertical-align: middle;"><?php echo $row['sku']; ?></td>
-                                <td style="vertical-align: middle;"><?php echo $row['product_name']; ?></td>
-                                <td style="vertical-align: middle;"><?php echo $row['measurement']; ?></td>
+                                <td style="vertical-align: middle;">
+                                    <?php
+                                    echo $row['product_name'];
+                                    if (isset($row['measurement'])) {
+                                        echo ' - <span style="font-size: 80%;">' . $row['measurement'] . '</span>';
+                                    }
+                                    ?>
+                                </td>
                                 <td style="vertical-align: middle;"><?php echo $row['descript']; ?></td>
                                 <td style="vertical-align: middle;"><?php echo $row['quantity']; ?></td>
 

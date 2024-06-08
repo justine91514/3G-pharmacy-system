@@ -101,8 +101,9 @@ while ($row = mysqli_fetch_assoc($result)) {
     $maxWidth[2] = max($maxWidth[2], $pdf->GetStringWidth($row['categories']) + 5);
     $maxWidth[3] = max($maxWidth[3], $pdf->GetStringWidth($row['type']) + 5);
     $maxWidth[4] = max($maxWidth[4], $pdf->GetStringWidth($row['unit']) + 5);
-    $maxWidth[6] = max($maxWidth[5], $pdf->GetStringWidth($row['stocks_available']) + 5);
-    $maxWidth[7] = max($maxWidth[6], $pdf->GetStringWidth(($row['prescription'] == 1 ? 'Yes' : 'No')) + 5);
+    $maxWidth[5] = max($maxWidth[5], $pdf->GetStringWidth($row['measurement']) + 5);
+    $maxWidth[6] = max($maxWidth[6], $pdf->GetStringWidth($row['stocks_available']) + 5);
+    $maxWidth[7] = max($maxWidth[7], $pdf->GetStringWidth(($row['prescription'] == 1 ? 'Yes' : 'No')) + 5);
 
 }
 
@@ -127,8 +128,9 @@ $pdf->Cell($maxWidth[1], 10, 'Product Name', 1, 0, 'C', 1);
 $pdf->Cell($maxWidth[2], 10, 'Category', 1, 0, 'C', 1);
 $pdf->Cell($maxWidth[3], 10, 'Type', 1, 0, 'C', 1);
 $pdf->Cell($maxWidth[4], 10, 'Unit', 1, 0, 'C', 1);
-$pdf->Cell($maxWidth[5], 10, 'Stocks Available', 1, 0, 'C', 1);
-$pdf->Cell($maxWidth[6], 10, 'Prescription', 1, 1, 'C', 1);
+$pdf->Cell($maxWidth[5], 10, 'Measurement', 1, 0, 'C', 1);
+$pdf->Cell($maxWidth[6], 10, 'Stocks Available', 1, 0, 'C', 1);
+$pdf->Cell($maxWidth[7], 10, 'Prescription', 1, 1, 'C', 1);
 
 
 // Set font for the table data
@@ -145,8 +147,9 @@ while ($row = mysqli_fetch_assoc($result)) {
     $pdf->Cell($maxWidth[2], 10, $row['categories'], 1, 0, 'C');
     $pdf->Cell($maxWidth[3], 10, $row['type'], 1, 0, 'C');
     $pdf->Cell($maxWidth[4], 10, $row['unit'], 1, 0, 'C');
-    $pdf->Cell($maxWidth[5], 10, $row['stocks_available'], 1, 0, 'C');
-    $pdf->Cell($maxWidth[6], 10, ($row['prescription'] == 1 ? 'Yes' : 'No'), 1, 1, 'C');
+    $pdf->Cell($maxWidth[5], 10, $row['measurement'], 1, 0, 'C');
+    $pdf->Cell($maxWidth[6], 10, $row['stocks_available'], 1, 0, 'C');
+    $pdf->Cell($maxWidth[7], 10, ($row['prescription'] == 1 ? 'Yes' : 'No'), 1, 1, 'C');
     $pdf->SetX($headerXPos); // Set X position to center the table data
 }
 

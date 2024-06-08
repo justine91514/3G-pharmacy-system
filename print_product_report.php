@@ -48,6 +48,7 @@ include("dbconfig.php");
         <th>Category</th>
         <th>Type</th>
         <th>Unit</th>
+        <th>Measurement</th>
         <th>Stocks Available</th>
         <th>Prescription</th>
     </tr>
@@ -65,6 +66,7 @@ include("dbconfig.php");
             echo "<td>" . $row['categories'] . "</td>";
             echo "<td>" . $row['type'] . "</td>";
             echo "<td>" . $row['unit'] . "</td>";
+            echo "<td>" . $row['measurement'] . "</td>";
             echo "<td>" . $row['stocks_available'] . "</td>";
             echo "<td>" . ($row['prescription'] == 1 ? 'Yes' : 'No') . "</td>";
             echo "</tr>";

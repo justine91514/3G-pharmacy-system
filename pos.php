@@ -48,6 +48,8 @@ error_reporting(E_ALL);
     }
     ?>
 
+
+
     <div class="container-fluid" style="width: 90%; padding-bottom: 80px; margin-bottom: 100px;">
 
         <div class="card shadow nb-4">
@@ -190,6 +192,8 @@ error_reporting(E_ALL);
         </div>
     </div>
 </div>
+
+
 <!-- Maximum Quantity Reached Modal -->
 <div class="modal fade" id="maxQuantityModal" tabindex="-1" role="dialog" aria-labelledby="maxQuantityModalLabel"
     aria-hidden="true">
@@ -532,6 +536,7 @@ error_reporting(E_ALL);
                                         $('#outOfStockModal').modal('show');
                                         return; // Stop further execution
                                     }
+
                                     $('#descript').val(responseData[0].descript);
                                     $('#price').val(responseData[0].price);
                                     $('#product_stock_name').val(productNameWithMeasurement);
